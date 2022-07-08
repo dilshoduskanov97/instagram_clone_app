@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -11,6 +14,23 @@ import 'package:instagram_clone_app/pages/splash_page.dart';
 import 'package:instagram_clone_app/services/hive_service.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();
+
+  // Pass all uncaught errors from the framework to Crashlytics.
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+
+  runZonedGuarded<Future<void>>(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+
+    FlutterError.onError =
+        FirebaseCrashlytics.instance.recordFlutterFatalError;
+
+    runApp(MyApp());
+  }, (error, stack) =>
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true));
   await Hive.initFlutter();
   await Hive.openBox(HiveDB.DB_NAME);
   WidgetsFlutterBinding.ensureInitialized();

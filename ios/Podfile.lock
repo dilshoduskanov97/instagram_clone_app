@@ -613,6 +613,9 @@ PODS:
     - FirebaseAuth (~> 8.15.0)
   - Firebase/CoreOnly (8.15.0):
     - FirebaseCore (= 8.15.0)
+  - Firebase/Crashlytics (8.15.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 8.15.0)
   - Firebase/Firestore (8.15.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 8.15.0)
@@ -628,6 +631,10 @@ PODS:
     - Flutter
   - firebase_core (1.15.0):
     - Firebase/CoreOnly (= 8.15.0)
+    - Flutter
+  - firebase_crashlytics (2.8.4):
+    - Firebase/Crashlytics (= 8.15.0)
+    - firebase_core
     - Flutter
   - firebase_messaging (11.2.14):
     - Firebase/Messaging (= 8.15.0)
@@ -651,6 +658,13 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/Logger (~> 7.7)
     - nanopb (~> 2.30908.0)
+  - FirebaseCrashlytics (8.15.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleDataTransport (~> 9.1)
+    - GoogleUtilities/Environment (~> 7.7)
+    - nanopb (~> 2.30908.0)
+    - PromisesObjC (< 3.0, >= 1.2)
   - FirebaseFirestore (8.15.0):
     - abseil/algorithm (~> 1.20211102.0)
     - abseil/base (~> 1.20211102.0)
@@ -792,6 +806,7 @@ DEPENDENCIES:
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
+  - firebase_crashlytics (from `.symlinks/plugins/firebase_crashlytics/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
   - Flutter (from `Flutter`)
@@ -811,6 +826,7 @@ SPEC REPOS:
     - FirebaseAuth
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
     - FirebaseFirestore
     - FirebaseInstallations
     - FirebaseMessaging
@@ -835,6 +851,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
+  firebase_crashlytics:
+    :path: ".symlinks/plugins/firebase_crashlytics/ios"
   firebase_messaging:
     :path: ".symlinks/plugins/firebase_messaging/ios"
   firebase_storage:
@@ -864,11 +882,13 @@ SPEC CHECKSUMS:
   Firebase: 5f8193dff4b5b7c5d5ef72ae54bb76c08e2b841d
   firebase_auth: 0624c0e2e1c0732209286f99cdacfe2b985a3c61
   firebase_core: fa19947d8db1c0a62d8872c45039b3113829cd2e
+  firebase_crashlytics: 149e5d050ea33fd614b38cb479f234874a8980f6
   firebase_messaging: 16a1bcf72818ff3cb9d77c1bbfabb67997fbda47
   firebase_storage: e66af08f2f440d0582731c800d93065092edc517
   FirebaseAuth: 3e73bf8abf4fbb40f8b421f361f4cc48ee57388c
   FirebaseCore: 5743c5785c074a794d35f2fff7ecc254a91e08b1
   FirebaseCoreDiagnostics: 92e07a649aeb66352b319d43bdd2ee3942af84cb
+  FirebaseCrashlytics: feb07e4e9187be3c23c6a846cce4824e5ce2dd0b
   FirebaseFirestore: d7023faff8e1b4fd69d0adbcf18e65129bc03842
   FirebaseInstallations: 40bd9054049b2eae9a2c38ef1c3dd213df3605cd
   FirebaseMessaging: 5e5118a2383b3531e730d974680954c679ca0a13
@@ -892,6 +912,6 @@ SPEC CHECKSUMS:
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
   url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
 
-PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+PODFILE CHECKSUM: a75497545d4391e2d394c3668e20cfb1c2bbd4aa
 
 COCOAPODS: 1.11.3
